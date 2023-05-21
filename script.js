@@ -11,7 +11,7 @@ function insensitiveCase(playerSelection){
 function playRound(playerSelection, computerSelection){
     playerSelection = insensitiveCase(prompt("Choose! Rock, paper or scissors?"));
     computerSelection = rockPaperScissors[Math.floor(Math.random() * rockPaperScissors.length)];
-    if (playerSelection === "rock"){
+        if (playerSelection === "rock"){
         if (computerSelection === "Rock"){
             return draw;
         } else if (computerSelection === "Paper"){
@@ -27,7 +27,7 @@ function playRound(playerSelection, computerSelection){
         } else{
             return lose;
         } 
-    } else{
+    } else if (playerSelection === "scissors"){
         if(computerSelection === "Rock") {
             return lose;            
         } else if(computerSelection === "Paper"){
@@ -35,12 +35,16 @@ function playRound(playerSelection, computerSelection){
         } else{
             return draw;
         }
-    }    
+    } else {
+        return fail = "Sad! Game doesn't work that way";
+    }
 }
 
 let playerScore = 0,
 computerScore = 0;
- 
+//  
+//  "Computer choiced: " + computerSelection + " " + 
+//  
 function game(){
     for(let i = 0; i < 5; i++){
         const result = playRound();
@@ -49,10 +53,12 @@ function game(){
             console.log(win + " Your score is: " + playerScore + ". Computer score = " + computerScore);
          } else if (result == draw){
             console.log(draw + "Your score is: " + playerScore + ". Computer score = " + computerScore);
-         } else{
+         } else if (result == lose) {
             ++computerScore;
             console.log(lose + " Your score is: " + playerScore + ". Computer score = " + computerScore);
-         }
+         } else{
+        console.log("You didn't input a valid option!");
+        }
         }
 
     if (playerScore > computerScore){
