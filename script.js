@@ -1,83 +1,14 @@
-// primer paso completo, seleccion aleatoria lista
-// crear funcion playRound con los parametros: playerSelection, computerSelection
-// la funcion player selection tiene que ser case insensitive
-// hacer funcion que reciba la entrada de datos de la seleccion del jugador, piedar, papel o tijera
-// hacer prompt que reciba una string
+// 1)Crear getComputerChoice
+// 1.1) Hacer player selection insensible a la mayuscula
+// 
+// 2)Crear funcion que juegue una sola ronda de piedra papel o tijeras. tiene que tener 2 parametros, playerSelection y computerSelection. Devolver un string que declare al ganador de la ronda.
+// 
+// 3) Crear la funcion game que permita jugar 5 rounds con un loop. conmsole log para mostrar los resultados de cada ronda y el ganador al final
 
-// crear funcion playRound con los parametros de las funciones anteriores 
-//
-//
-// 
-// 
-// 
-// 
-// 
-let computerChoice = getComputerChoice();
-function getComputerChoice(computerSelection){
-    let rockPaperScissors = ["Rock","Paper","Scissors"];
-    computerSelection = rockPaperScissors[Math.floor(Math.random() * rockPaperScissors.length)]
-    return computerSelection;
-}
+const rockPaperScissors = ["Rock", "Paper", "Scissors"];
+const computerSelection = rockPaperScissors[Math.floor(Math.random() * rockPaperScissors.length)];
+const playerSelection = insensitiveCase(prompt("Piedra, papel o tijeras?"));
 function insensitiveCase(playerSelection){
-    playerSelection = (playerSelection.charAt(0).toUpperCase()) + (playerSelection.slice(1).toLowerCase())
+    playerSelection = playerSelection.toLowerCase();
     return playerSelection;
 }
-// let playerSelection = prompt("Elige entre Piedra, Papel o Tijeras: ");
-
-// playerSelection = convertCapitalized()
-// function convertCapitalized(playerSelection){
-//     let firstLetter = playerSelection.charAt(0).toUpperCase();
-//     let allWord = firstLetter + playerSelection.slice(1).toLowerCase();
-//     return allWord;
-// }
-
-let playerSelection = insensitiveCase(prompt("Rock, paper or scissors?"));
-
-
-function playRound(playerSelection, computerChoice){
-    let win = "You win!",
-        lose = "You lose!",
-        draw = "Draw";
-    if (playerSelection == "Rock"){
-
-        if(computerChoice == "Rock"){
-            return draw;            
-        } else if(computerChoice == "Paper"){
-            return lose;
-        } else {
-            return win;
-        }
-    
-    } else if(playerSelection == "Paper"){
-
-        if(computerChoice == "Rock"){
-            return win;
-        } else if(computerChoice == "Paper"){
-            return draw;
-        } else {
-            return lose;
-        }
-    } else if (playerSelection == "Scissors"){
-
-        if(computerChoice == "Rock"){
-            return lose;
-        } else if(computerChoice == "Paper"){
-            return win;
-        } else {
-            return draw;
-        }
-    } else {
-        console.log("no defined!!");
-    }
-}
-
-function game(){
-for(let i = 0; i<5; i++){
-let result = playRound(playerSelection, computerChoice);
-return result
-}
-console.log("end of the game")
-}
-
-game();
-
