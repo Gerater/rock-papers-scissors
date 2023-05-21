@@ -1,14 +1,7 @@
-// 1)Crear getComputerChoice
-// 1.1) Hacer player selection insensible a la mayuscula
-// 
-// 2)Crear funcion que juegue una sola ronda de piedra papel o tijeras. tiene que tener 2 parametros, playerSelection y computerSelection. Devolver un string que declare al ganador de la ronda.
-// 
-// 3) Crear la funcion game que permita jugar 5 rounds con un loop. conmsole log para mostrar los resultados de cada ronda y el ganador al final
-
 const rockPaperScissors = ["Rock", "Paper", "Scissors"];
-const win = "",
-lose = "",
-draw = "";
+const win = "You won! ",
+lose = "You lose.",
+draw = "It's a draw. ";
 
 function insensitiveCase(playerSelection){
     playerSelection = playerSelection.toLowerCase();
@@ -16,7 +9,7 @@ function insensitiveCase(playerSelection){
 }
 
 function playRound(playerSelection, computerSelection){
-    playerSelection = insensitiveCase(prompt("Piedra, papel o tijeras?"));
+    playerSelection = insensitiveCase(prompt("Choose! Rock, paper or scissors?"));
     computerSelection = rockPaperScissors[Math.floor(Math.random() * rockPaperScissors.length)];
     if (playerSelection === "rock"){
         if (computerSelection === "Rock"){
@@ -45,29 +38,31 @@ function playRound(playerSelection, computerSelection){
     }    
 }
 
-// const result = playRound();
-// console.log(result)
-// 1) agregar 2 variables, una que registre el puntaje de la maquina y otra que registre el puntaje del jugador.
-// 2) si la variable del jugador es mayor, imprimir resultado de victoria. lo opuesto igual.
-// 
-// 
- function game(){
-    for(let i=0; i<5; i++){
-        let playerScore = 0,
-        computerScore = 0,
-        result = playRound();
+let playerScore = 0,
+computerScore = 0;
+ 
+function game(){
+    for(let i = 0; i < 5; i++){
+        const result = playRound();
          if (result == win){
             ++playerScore;
-            console.log("You won! your score is: " + playerScore);
+            console.log(win + " Your score is: " + playerScore + ". Computer score = " + computerScore);
          } else if (result == draw){
-            console.log("It's a draw");
+            console.log(draw + "Your score is: " + playerScore + ". Computer score = " + computerScore);
          } else{
             ++computerScore;
-            console.log("You lose!");
+            console.log(lose + " Your score is: " + playerScore + ". Computer score = " + computerScore);
          }
+        }
 
-        console.log(result + "Your score: " + playerScore)
+    if (playerScore > computerScore){
+     console.log("You won the game! Congratz.");
+    } else if (playerScore == computerScore){
+        console.log("This game ended on a draw!");
+    } else {
+        console.log("You lose the game. Try again!");
     }
 }
-
+        
 game();
+        
