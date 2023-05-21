@@ -6,13 +6,9 @@
 // 3) Crear la funcion game que permita jugar 5 rounds con un loop. conmsole log para mostrar los resultados de cada ronda y el ganador al final
 
 const rockPaperScissors = ["Rock", "Paper", "Scissors"];
-
-const win = "You won!",
-lose = "You lose.",
-draw = "Draw";
-
-
-
+const win = "",
+lose = "",
+draw = "";
 
 function insensitiveCase(playerSelection){
     playerSelection = playerSelection.toLowerCase();
@@ -20,8 +16,8 @@ function insensitiveCase(playerSelection){
 }
 
 function playRound(playerSelection, computerSelection){
-    computerSelection = rockPaperScissors[Math.floor(Math.random() * rockPaperScissors.length)];
     playerSelection = insensitiveCase(prompt("Piedra, papel o tijeras?"));
+    computerSelection = rockPaperScissors[Math.floor(Math.random() * rockPaperScissors.length)];
     if (playerSelection === "rock"){
         if (computerSelection === "Rock"){
             return draw;
@@ -49,11 +45,29 @@ function playRound(playerSelection, computerSelection){
     }    
 }
 
-console.log(playRound());
+// const result = playRound();
+// console.log(result)
+// 1) agregar 2 variables, una que registre el puntaje de la maquina y otra que registre el puntaje del jugador.
+// 2) si la variable del jugador es mayor, imprimir resultado de victoria. lo opuesto igual.
+// 
+// 
+ function game(){
+    for(let i=0; i<5; i++){
+        let playerScore = 0,
+        computerScore = 0,
+        result = playRound();
+         if (result == win){
+            ++playerScore;
+            console.log("You won! your score is: " + playerScore);
+         } else if (result == draw){
+            console.log("It's a draw");
+         } else{
+            ++computerScore;
+            console.log("You lose!");
+         }
 
-
-const result = playRound();
-
-function game(result){
-
+        console.log(result + "Your score: " + playerScore)
+    }
 }
+
+game();
